@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load staticfiles %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="{% block metadescription %}The best place to buy all computer related hardware.{% endblock metadescription %}">
+    <meta name="keywords" content="Computers, Hardware, GPU, CPU, RAM, Peripherals">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+    {% block other_css %}
+    {% endblock other_css %}
+    <title>{% block title %}The Hardware Shop{% endblock title %}</title>
+</head>
+<body>
+    {% include 'navbar.html' %}
+
+    {% block content %}
+    {% endblock content %}
+
+    {% include 'footer.html' %}
+
+    <script src="{% static 'js/jquery.js' %}"></script>
+    <script src="{% static 'js/bootstrap.bundle.js' %}"></script>
+    {% block other_js %}
+    {% endblock other_js %}
+</body>
+</html>

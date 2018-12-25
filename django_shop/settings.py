@@ -23,12 +23,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'j3s@184=a$dwl7=t3khfbh*dlel%ie3jx6-lt38+-2y))ovl&x'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = [
-    '127.0.0.1',
-    'localhost',
-]
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -131,6 +128,7 @@ STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'other_static'),
+    os.path.join(BASE_DIR, 'elec_shop', 'static'),
 ]
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')

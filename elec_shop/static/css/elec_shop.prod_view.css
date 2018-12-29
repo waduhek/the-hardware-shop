@@ -1,0 +1,43 @@
+.c-top-header {
+    font-size: 19px;
+    font-weight: 600;
+}
+
+@media (max-width: 576px) {
+    .c-top-header {
+        font-size: 15px;
+        font-weight: 600;
+    }
+}
+
+.c-btn-buy {
+    color: #fff;
+    background-color: #6f42c1;
+    border-color: #6f42c1;
+}
+
+.c-btn-buy:hover {
+    color: #fff;
+    background-color: #3e0a9e;
+    border-color: #3e0a9e;
+}
+
+.c-btn-buy:active, .c-btn-buy:focus {
+    box-shadow: 0 0 0 0.2em rgba(111, 66, 193, 0.25);
+}
+
+.c-btn-atc {
+    color: #6f42c1;
+    background-color: transparent;
+    background-image: none;
+    border-color: #6f42c1;
+}
+
+.c-btn-atc:hover {
+    color: #fff;
+    background-color: #6f42c1;
+}
+
+.c-btn-atc:active, .c-btn-atc:focus {
+    box-shadow: 0 0 0 0.2em rgba(111, 66, 193, 0.25);
+}

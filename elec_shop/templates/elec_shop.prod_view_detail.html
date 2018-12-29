@@ -1,0 +1,153 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% load humanize %}
+
+{% block other_css %}
+    <link rel="stylesheet" href="{% static 'css/elec_shop.prod_view_detail.css' %}">
+    <link rel="stylesheet" href="{% static 'css/all.css' %}">
+{% endblock other_css %}
+
+{% block content %}
+    <div class="container-fluid">
+        <!-- Product General Info -->
+        <div class="row mb-4">
+            <!-- Product Image -->
+            <div class="col-lg-6">
+                {# <img class="img-fluid" src="https://placeimg.com/640/480/any" alt="Placeholder"> #}
+            </div>
+            <!-- Product Image end -->
+
+            <!-- Right Division -->
+            <div class="col-lg-6">
+                <div class="row border-bottom">
+                    <!-- Product Name -->
+                    <div class="col-12">
+                        <p id="productName">Product Name</p>
+                    </div>
+                    <!-- Product Name end -->
+
+                    <!-- Product Category -->
+                    <div class="col-12">
+                        <span class="text-uppercase" id="productCat">Category</span>
+                    </div>
+                    <!-- Product Category end -->
+                </div>
+
+                <!-- Product Basic Info -->
+                <div class="row text-muted border-bottom c-border-spacing">
+                    <div class="col-4">
+                        <div class="c-basic-font">
+                            <span>Manufacturer:</span>
+                        </div>
+                        <div class="c-basic-font">
+                            <span>Model Number:</span>
+                        </div>
+                        <div class="c-basic-font">
+                            <span>Availability:</span>
+                        </div>
+                    </div>
+                    <div class="col-5">
+                        <div class="c-basic-font">
+                            <span>Manufacturer Name</span>
+                        </div>
+                        <div class="c-basic-font">
+                            <span>MODELNO</span>
+                        </div>
+                        <div class="c-basic-font">
+                            <span>###</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Product Basic Info end -->
+
+                <!-- Price -->
+                <div class="row border-bottom c-border-spacing">
+                    <div class="col-2 align-self-center">
+                        <span id="priceLabel">Price:</span>
+                    </div>
+                    <div class="col-2 align-self-center">
+                        <span>&#x20b9;{{ 10000000 | intcomma }}</span>
+                    </div>
+                </div>
+                <!-- Price end -->
+
+                <!-- Add To Cart, Buy Now and Quantity -->
+                <div class="row c-border-spacing">
+                    <div class="col-md-2 pt-2" id="quantity-control">
+                        <a id="decrease"><i class="fas fa-minus-circle c-fa-color"></i></a>&nbsp;
+                        <span id="quantity">1</span>&nbsp;
+                        <a id="increase"><i class="fas fa-plus-circle c-fa-color"></i></a>
+                    </div>
+                    <div class="col-md-2">
+                        <div>
+                            <a href="#" class="btn btn-block c-btn-buy">Buy Now</a>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div>
+                            <a href="#" class="btn c-btn-atc">Add To Cart</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Add to Cart, Buy Now and Quantity end -->
+            </div>
+            <!-- Right Division end -->
+        </div>
+        <!-- Product General Info end -->
+
+        <!-- Product Details -->
+        <div class="row">
+            <div class="col">
+                <div class="container border p-0">
+                    <!-- Tabs -->
+                    <ul class="nav c-nav mb-3 border-bottom" role="tablist">
+                        <li class="nav-item">
+                            <a href="#specs" class="nav-link active c-nav-color border-right" id="specs-tab" data-toggle="tab">Specifications</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#images" class="nav-link c-nav-color border-right" data-toggle="tab">Images</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#reviews" class="nav-link c-nav-color border-right" data-toggle="tab">Reviews</a>
+                        </li>
+                    </ul>
+                    <!-- Tabs end -->
+
+                    <!-- Tab Content -->
+                    <div class="tab-content">
+                        <!-- Specifications -->
+                        <div class="tab-pane show active pb-3" id="specs" role="tabpanel" aria-labelledby="specification-tab">
+                            <div class="container">
+                                Specifications Here
+                            </div>
+                        </div>
+                        <!-- Specifications end -->
+
+                        <!-- Images -->
+                        <div class="tab-pane pb-3" id="images" role="tabpanel" aria-labelledby="images-tab">
+                            <div class="container">
+                                Images Here
+                            </div>
+                        </div>
+                        <!-- Images end -->
+
+                        <!-- Reviews -->
+                        <div class="tab-pane pb-3" id="reviews" role="tabpanel" aria-labelledby="reviews-tab">
+                            <div class="container">
+                                Reviews Here
+                            </div>
+                        </div>
+                        <!-- Reviews end -->
+                    </div>
+                    <!-- Tab Content end -->
+                </div>
+            </div>
+        </div>
+        <!-- Product Details end -->
+    </div>
+{% endblock content %}
+
+{% block other_js %}
+    <script src="{% static 'js/all.js' %}"></script>
+    <script src="{% static 'js/elec_shop.prod_view_detail.js' %}"></script>
+{% endblock other_js %}

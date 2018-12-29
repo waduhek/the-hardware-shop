@@ -6,5 +6,34 @@
 {% endblock other_css %}
 
 {% block content %}
-    
+    <div class="container-fluid">
+        <!-- Top Header -->
+        <div class="row justify-content-center border-bottom">
+            <div class="col-8 text-center c-top-header">
+                Category: Category Name
+                {# You searched for: "search query" #}
+            </div>
+        </div>
+        <!-- Top Header end -->
+
+        <!-- Search Result or Category -->
+        <div class="row">
+            <div class="container border my-3 py-3">
+                <div class="row">
+                    <div class="col-lg-2">
+                        Thumbnail Here
+                        {# <img src="#" class="img-fluid" alt="Product Name"> #}
+                    </div>
+                    <div class="col-lg-8 my-3 my-lg-0">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur ut, animi necessitatibus minima hic? Ratione corporis nulla magni quae voluptatibus temporibus praesentium quia non, accusantium eaque illum at voluptates incidunt.
+                    </div>
+                    <div class="col-lg-2">
+                        <a href="#" class="btn btn-block c-btn-buy">Buy Now</a>
+                        <a href="#" class="btn btn-block c-btn-atc">Add To Cart</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Search Result or Category end -->
+    </div>
 {% endblock content %}

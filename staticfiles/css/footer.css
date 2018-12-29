@@ -17,3 +17,9 @@ footer {
 .footer-link:hover {
     color: #3e0a9e;
 }
+
+@media (max-width: 1200px) {
+    .c-mb {
+        margin-bottom: 1.25rem !important;
+    }
+}

@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
+{% load humanize %}
 
 {% block other_css %}
     <link rel="stylesheet" href="{% static 'css/owl.carousel.css' %}">
@@ -19,6 +20,23 @@
                 <p class="content-label">Our Latest Additions</p>
             </div>
             <div class="owl-carousel">
+                {% for prod in latest %}
+                    <div class="card">
+                        {% for pic in thumbnails %}
+                            {% with prodname=prod.name|lower|cut:" " %}
+                                {% if prodname in pic.image_name %}
+                                    <img src="{{ pic.image.url }}" alt="{{ pic.image_name }}" class="card-img-top img-fluid">
+                                {% endif %}
+                            {% endwith %}
+                        {% endfor %}
+                        <div class="card-body">
+                            <h5 class="card-title">{{ prod.manufacturer }} {{ prod.name }}</h5>
+                            <p class="card-text text-success">&#x20b9;{{ prod.price|intcomma }}</p>
+                            <a href="{{ prod.get_url }}" class="btn c-btn-color">View</a>
+                            <a href="#" class="btn c-alt-btn-color">Add to Cart</a>
+                        </div>
+                    </div>
+                {% endfor %}
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">Card Title</h5>

@@ -10,15 +10,9 @@ class CategoryAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug': ('name', ), }
     fieldsets = [
         (
-            'Name',
+            None,
             {
-                'fields': ['name', ],
-            },
-        ),
-        (
-            'Slug',
-            {
-                'fields': ['slug', ]
+                'fields': ['name', 'slug', ],
             },
         ),
     ]
@@ -31,6 +25,23 @@ class ProductAdmin(admin.ModelAdmin):
     list_editable = ['stock', 'price', 'available', ]
     prepopulated_fields = {'slug': ('manufacturer', 'name', )}
     list_per_page = 20
+    fieldsets = [
+        (
+            None,
+            {
+                'fields': [
+                    'category',
+                    'manufacturer',
+                    'name',
+                    'slug',
+                    'description',
+                    'price',
+                    'stock',
+                    'available',
+                ],
+            },
+        ),
+    ]
 
 
 @admin.register(Specification)
@@ -46,6 +57,18 @@ class SpecificationAdmin(admin.ModelAdmin):
             'Specifications',
             {
                 'fields': ['field', 'value', ],
+            },
+        ),
+    ]
+
+
+@admin.register(Image)
+class ImageAdmin(admin.ModelAdmin):
+    fieldsets = [
+        (
+            None,
+            {
+                'fields': ['product', 'image_name', 'image', 'thumbnail_flag'],
             },
         ),
     ]

@@ -1,4 +1,6 @@
 from django.db import models
+from django.core.validators import FileExtensionValidator
+from django.urls import reverse
 
 
 class Category(models.Model):
@@ -13,6 +15,12 @@ class Category(models.Model):
         verbose_name = 'Category'
         verbose_name_plural = 'Categories'
 
+    def get_url(self):
+        '''
+        Utility function for obtaining the URL to view the products in the category.
+        '''
+        return reverse('shop:products_by_category', args=[self.slug, ])
+
     def __str__(self):
         return '{}'.format(self.name)
 
@@ -21,11 +29,15 @@ class Product(models.Model):
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
 
     name = models.CharField(max_length=100, help_text='Name of the product.')
-    slug = models.SlugField(primary_key=True, max_length=255, help_text='Auto generated field. Do not edit.')
+    slug = models.SlugField(
+        primary_key=True,
+        max_length=255,
+        help_text='Auto generated field. Do not edit.'
+    )
 
     manufacturer = models.CharField(max_length=50)
 
-    price = models.PositiveIntegerField()
+    price = models.PositiveIntegerField(help_text='Price in INR.')
 
     stock = models.PositiveIntegerField()
 
@@ -42,8 +54,14 @@ class Product(models.Model):
         verbose_name = 'Product'
         verbose_name_plural = 'Products'
 
+    def get_url(self):
+        '''
+        Utility function for obtaining the URL for viewing the product.
+        '''
+        return reverse('shop:product_detail', args=[self.category.slug, self.slug, ])
+
     def __str__(self):
-        return 'Category: {}, Product: {}'.format(self.category.name, self.name)
+        return 'Product: {} {}'.format(self.manufacturer, self.name)
 
 
 class Specification(models.Model):
@@ -59,12 +77,55 @@ class Specification(models.Model):
         verbose_name_plural = 'Specifications'
 
     def __str__(self):
-        return 'Specification for {}'.format(self.product.name)
+        return 'Specification for {} {}'.format(self.product.manufacturer, self.product.name)
 
 
 class Image(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
 
-    # Confirm width and height
-    image = models.ImageField(upload_to='shop_prod_images', width_field=600, height_field=600, max_length=200)
-    # thumbnail = models.ImageField(upload_to='shop_prod_thumb', width_field=)
+    image = models.ImageField(
+        upload_to='shop_prod_images',
+        max_length=200,
+        validators=[FileExtensionValidator(['png', 'jpg', 'jpeg', ]), ],
+        help_text='''
+        Image for the product.<br>
+        * Sizes:<br>
+        &nbsp;&nbsp;- 600x600px for regular images.<br>
+        &nbsp;&nbsp;- 200x200 for thumbnail<br>
+        * Allowed extensions:<br>
+        &nbsp;&nbsp;- PNG<br>
+        &nbsp;&nbsp;- JPG<br>
+        &nbsp;&nbsp;- JPEG<br>
+        '''
+    )
+    image_name = models.CharField(
+        max_length=70,
+        default=None,
+        help_text='''
+        Name for the image.<br>
+        * Naming Scheme:<br>
+        &nbsp;&nbsp;- Thumbnails must be named as manufacturer_name.product_name.thumbnail.extension<br>
+        &nbsp;&nbsp;- Other images to be named as manufacturer_name.product_name.(1, 2, 3, ..).extension<br>
+        '''
+    )
+    thumbnail_flag = models.BooleanField(
+        default=False,
+        help_text='''
+        Check this field if the image uploaded is a thumbnail.
+        '''
+    )
+    # thumbnail = models.ImageField(
+    #     upload_to='shop_prod_thumb',
+    #     width_field=200,
+    #     height_field=200,
+    #     max_length=200,
+    #     help_text='Thumbnail to be displayed. Must be a 200x200 image.'
+    # )
+
+    class Meta:
+        db_table = 'elec_shop_image'
+        verbose_name = 'Image'
+        verbose_name_plural = 'Images'
+
+    def __str__(self):
+        return 'Image for {} {}'.format(self.product.manufacturer, self.product.name)

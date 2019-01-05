@@ -48,6 +48,20 @@ class Product(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
 
+    thumbnail = models.ImageField(
+        upload_to='shop_prod_images',
+        max_length=200,
+        validators=[FileExtensionValidator(['png', 'jpg', 'jpeg', ])],
+        help_text='''
+        Thumbnail for the product.<br>
+        * Size: 200x200px<br>
+        * Allowed Extensions:<br>
+        &nbsp;&nbsp;- PNG<br>
+        &nbsp;&nbsp;- JPG<br>
+        &nbsp;&nbsp;- JPEG<br>
+        '''
+    )
+
     class Meta:
         db_table = 'elec_shop_product'
         ordering = ('category', 'name', 'price', 'stock', 'created', 'updated', )
@@ -61,7 +75,7 @@ class Product(models.Model):
         return reverse('shop:product_detail', args=[self.category.slug, self.slug, ])
 
     def __str__(self):
-        return 'Product: {} {}'.format(self.manufacturer, self.name)
+        return '{} {}'.format(self.manufacturer, self.name)
 
 
 class Specification(models.Model):
@@ -91,36 +105,12 @@ class Image(models.Model):
         Image for the product.<br>
         * Sizes:<br>
         &nbsp;&nbsp;- 600x600px for regular images.<br>
-        &nbsp;&nbsp;- 200x200 for thumbnail<br>
         * Allowed extensions:<br>
         &nbsp;&nbsp;- PNG<br>
         &nbsp;&nbsp;- JPG<br>
         &nbsp;&nbsp;- JPEG<br>
         '''
     )
-    image_name = models.CharField(
-        max_length=70,
-        default=None,
-        help_text='''
-        Name for the image.<br>
-        * Naming Scheme:<br>
-        &nbsp;&nbsp;- Thumbnails must be named as manufacturer_name.product_name.thumbnail.extension<br>
-        &nbsp;&nbsp;- Other images to be named as manufacturer_name.product_name.(1, 2, 3, ..).extension<br>
-        '''
-    )
-    thumbnail_flag = models.BooleanField(
-        default=False,
-        help_text='''
-        Check this field if the image uploaded is a thumbnail.
-        '''
-    )
-    # thumbnail = models.ImageField(
-    #     upload_to='shop_prod_thumb',
-    #     width_field=200,
-    #     height_field=200,
-    #     max_length=200,
-    #     help_text='Thumbnail to be displayed. Must be a 200x200 image.'
-    # )
 
     class Meta:
         db_table = 'elec_shop_image'

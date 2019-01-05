@@ -13,7 +13,7 @@
         <div class="row mb-4">
             <!-- Product Image -->
             <div class="col-lg-6 text-center">
-                <img class="img-fluid" src="https://placeholder.pics/svg/600x600" alt="Placeholder">
+                <img class="img-fluid" src="{{ images.0 }}" alt="{{ product.manufacturer }} {{ product.name }}">
             </div>
             <!-- Product Image end -->
 
@@ -22,13 +22,13 @@
                 <div class="row border-bottom">
                     <!-- Product Name -->
                     <div class="col-12">
-                        <p id="productName">Product Name</p>
+                        <p id="productName">{{ product.manufacturer }} {{ product.name }}</p>
                     </div>
                     <!-- Product Name end -->
 
                     <!-- Product Category -->
                     <div class="col-12">
-                        <span class="text-uppercase" id="productCat">Category</span>
+                        <span class="text-uppercase" id="productCat">{{ product.category.name }}</span>
                     </div>
                     <!-- Product Category end -->
                 </div>
@@ -48,13 +48,13 @@
                     </div>
                     <div class="col-5">
                         <div class="c-basic-font">
-                            <span>Manufacturer Name</span>
+                            <span>{{ product.manufacturer }}</span>
                         </div>
                         <div class="c-basic-font">
                             <span>MODELNO</span>
                         </div>
                         <div class="c-basic-font">
-                            <span>###</span>
+                            <span>{{ product.stock }}</span>
                         </div>
                     </div>
                 </div>
@@ -66,7 +66,7 @@
                         <span id="priceLabel">Price:</span>
                     </div>
                     <div class="col-2 align-self-center">
-                        <span>&#x20b9;{{ 10000000 | intcomma }}</span>
+                        <span>&#x20b9;{{ product.price | intcomma }}</span>
                     </div>
                 </div>
                 <!-- Price end -->
@@ -126,11 +126,11 @@
                         <!-- Images -->
                         <div class="tab-pane pb-3" id="images" role="tabpanel" aria-labelledby="images-tab">
                             <div class="container text-center">
-                                {# Images Here #}
-                                <img src="https://placeholder.pics/svg/600x600" class="img-fluid" alt="Placeholder">
-                                <img src="https://placeholder.pics/svg/600x600" class="img-fluid" alt="Placeholder">
-                                <img src="https://placeholder.pics/svg/600x600" class="img-fluid" alt="Placeholder">
-                                <img src="https://placeholder.pics/svg/600x600" class="img-fluid" alt="Placeholder">
+                                {% for image in images %}
+                                    <img src="https://placeholder.pics/svg/600x600" class="img-fluid" alt="Placeholder">
+                                {% empty %}
+                                    Sorry, images are not available at the moment.
+                                {% endfor %}
                             </div>
                         </div>
                         <!-- Images end -->

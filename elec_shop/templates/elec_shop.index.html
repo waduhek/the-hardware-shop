@@ -19,16 +19,10 @@
             <div class="mx-auto">
                 <p class="content-label">Our Latest Additions</p>
             </div>
-            <div class="owl-carousel">
+            <div class="owl-carousel mb-3">
                 {% for prod in latest %}
                     <div class="card">
-                        {% for pic in thumbnails %}
-                            {% with prodname=prod.name|lower|cut:" " %}
-                                {% if prodname in pic.image_name %}
-                                    <img src="{{ pic.image.url }}" alt="{{ pic.image_name }}" class="card-img-top img-fluid">
-                                {% endif %}
-                            {% endwith %}
-                        {% endfor %}
+                        <img src="{{ prod.thumbnail.url }}" alt="{{ prod.name }}" class="card-img-top img-fluid">
                         <div class="card-body">
                             <h5 class="card-title">{{ prod.manufacturer }} {{ prod.name }}</h5>
                             <p class="card-text text-success">&#x20b9;{{ prod.price|intcomma }}</p>
@@ -37,77 +31,6 @@
                         </div>
                     </div>
                 {% endfor %}
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">Card Title</h5>
-                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore unde nulla id sapiente quisquam optio a quis fuga dolor alias nisi esse sequi consequuntur suscipit cumque magnam, eum laborum. Molestiae!</p>
-                        <a href="#" class="btn c-btn-color">Link</a>
-                        <a href="#" class="btn c-alt-btn-color">Another Link</a>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">Card Title</h5>
-                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quas nobis saepe earum qui animi optio labore, assumenda ullam corporis sed, modi quae totam ab soluta nisi cupiditate sint illo. Ab.</p>
-                        <a href="#" class="btn c-btn-color">Link</a>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">Card Title</h5>
-                        <p class="card-text">Earum obcaecati possimus ipsa laborum repudiandae adipisci commodi ullam deleniti incidunt vitae porro dignissimos quia quasi, suscipit error, temporibus eligendi quos, animi nostrum rerum optio odio! Molestias sed exercitationem dolore!</p>
-                        <a href="#" class="btn c-btn-color">Link</a>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">Card Title</h5>
-                        <p class="card-text">Fuga veritatis reprehenderit ex quae nesciunt, ipsa laboriosam atque, ratione a accusantium pariatur, repellat! Quod labore dolores minus quis facilis placeat reiciendis, minima? Quis ad iure, quia vel, quaerat reiciendis.</p>
-                        <a href="#" class="btn c-btn-color">Link</a>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">Card Title</h5>
-                        <p class="card-text">Possimus magni, laudantium. Quisquam libero excepturi, nisi neque quod, fuga dolorum. Nobis similique facere, possimus, eveniet rerum beatae veritatis animi, quod cumque totam fugit distinctio sequi iure explicabo repellendus suscipit.</p>
-                        <a href="#" class="btn c-btn-color">Link</a>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">Card Title</h5>
-                        <p class="card-text">Aspernatur ab impedit aut, autem commodi repudiandae, accusamus quibusdam veniam culpa ipsum perferendis deleniti assumenda itaque consequatur voluptate quisquam voluptates dicta quo earum nostrum blanditiis, ex neque corporis. Temporibus, amet.</p>
-                        <a href="#" class="btn c-btn-color">Link</a>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">Card Title</h5>
-                        <p class="card-text">Dolore ullam amet dignissimos eius omnis facilis odio, ipsa ab, illum, reprehenderit suscipit incidunt. Autem non adipisci distinctio voluptates, recusandae sed, exercitationem omnis ab, et blanditiis saepe. Voluptatum saepe, autem.</p>
-                        <a href="#" class="btn c-btn-color">Link</a>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">Card Title</h5>
-                        <p class="card-text">Soluta velit odit, voluptate iusto, magnam reprehenderit deserunt sint. Quos in, impedit reiciendis veniam vel sit aliquid. Nulla assumenda, iste eligendi laudantium atque aut animi possimus amet esse itaque voluptate!</p>
-                        <a href="#" class="btn c-btn-color">Link</a>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">Card Title</h5>
-                        <p class="card-text">Voluptates dolorum itaque inventore praesentium, officiis ipsam velit est esse laboriosam culpa possimus? Hic esse labore modi necessitatibus sunt animi non dolores rem eos quasi, quas doloremque, eligendi, rerum. Ducimus!</p>
-                        <a href="#" class="btn c-btn-color">Link</a>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">Card Title</h5>
-                        <p class="card-text">Sapiente voluptatum similique porro iste, assumenda nam! Expedita totam a dignissimos, facilis ipsum commodi delectus quo, fugiat assumenda asperiores vel dolore, facere hic neque dolorum, fugit nobis corrupti quas est.</p>
-                        <a href="#" class="btn c-btn-color">Link</a>
-                    </div>
-                </div>
             </div>
         </div>
         <!-- Latest Addititons end -->

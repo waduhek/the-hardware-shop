@@ -38,6 +38,7 @@ class ProductAdmin(admin.ModelAdmin):
                     'price',
                     'stock',
                     'available',
+                    'thumbnail',
                 ],
             },
         ),
@@ -68,7 +69,7 @@ class ImageAdmin(admin.ModelAdmin):
         (
             None,
             {
-                'fields': ['product', 'image_name', 'image', 'thumbnail_flag'],
+                'fields': ['product', 'image', ],
             },
         ),
     ]
